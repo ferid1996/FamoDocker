@@ -1,0 +1,17 @@
+﻿version: '3.8'
+
+services:
+  famodocker:
+    image: famodocker:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_CONFIGURATION: Release
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - ./logs:/app/logs
